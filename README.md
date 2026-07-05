@@ -1,6 +1,6 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新: 2026-07-04 中国标准时间
+> 最后更新: 2026-07-06 中国标准时间
 > wsqzlzc
 
 本清单按 **来源仓库** 分组,方便溯源与更新。覆盖 Claude Code / Codex / OpenClaw / Cursor / Gemini CLI / Hermes 等多端共用的 skills,及与这些 agent 深度配合的外部生态工具(MCP 服务、CLI、桌面 App)。
@@ -104,6 +104,7 @@
 
 | 工具 | 源 | 定位 | 关键能力 |
 |------|----|------|---------|
+| **agent-reach** | https://github.com/Panniantong/agent-reach | 全网平台接入层(统一入口) | 一键装 mcporter/Exa/yt-dlp 核心 + 15 个平台渠道(Twitter/Reddit/Facebook/Instagram/小红书/B站/小宇宙/雪球/LinkedIn/V2EX/RSS/GitHub/YouTube/全网搜索/任意网页);多后端路由(OpenCLI 浏览器会话 / 平台 CLI / 公开 API);`agent-reach doctor` 查渠道状态;`--channels=all` 一键拉满;Skill 同时装在 `~/.claude/skills/` 和 `~/.agents/skills/`;v1.5.0 已装;MIT(请独立审阅上游工具各自的 license) |
 | **cc-switch** | https://github.com/farion1231/cc-switch | AI coding 全能助手(Tauri 2,跨平台) | 7 种 coding agent(Claude Code/Codex/Gemini CLI/OpenCode/OpenClaw/Hermes 等)的 API 提供商统一管理;一键切换 + 50+ 预设;本地代理热切 + 自动 failover;Dropbox/OneDrive/iCloud/WebDAV 云同步;MCP server/Skill 双向同步;113k stars;MIT |
 | **headroom** | https://github.com/headroomlabs-ai/headroom | AI Agent 上下文压缩层 | 工具输出/RAG/日志在送达 LLM 前压 60-95% token;Kompress-v2-base 自定义模型;CCR 可逆压缩;跨 agent 共享记忆;`headroom wrap <agent>` 即装即用;Apache 2.0 |
 | **last30days-skill** | https://github.com/mvanhorn/last30days-skill | 最近 30 天舆情研究引擎 | Reddit/X/YouTube(全字幕)/TikTok/Instagram/HN/Polymarket/GitHub 并行检索;人/公司/产品竞对 vs 对比;招聘信号;可分享 HTML report;v3.8.3 已装;48.7k stars;MIT |
@@ -122,10 +123,14 @@
 | 已安装 Claude Code 插件 | 1 | `last30days@3.8.3` |
 | 已注册 Marketplace | 2 | last30days-skill, karpathy-skills |
 | 会话内置 skills | 44 | Claude Code 启动自动加载 |
-| 生态工具(MCP / CLI) | 4 | cc-switch / headroom / last30days / codebase-memory-mcp |
+| 生态工具(MCP / CLI) | 5 | agent-reach / cc-switch / headroom / last30days / codebase-memory-mcp |
+| agent-reach 已激活渠道 | 6 | GitHub / YouTube / V2EX / RSS/Atom / 任意网页 / B站(基础) |
+| agent-reach 待配置渠道 | 9 | Twitter / Reddit / Facebook / Instagram / 小红书 / 小宇宙 / 雪球 / LinkedIn / 全网搜索(Exa 配置路径偏差,见备注) |
 
 ---
 
 ## 备注
 
 - 拆书系列(§3.1)的"源"是原书,cangjie-skill 做的是蒸馏,归在独立来源是因为它无法追溯回一个上游 skill 仓库。
+- **agent-reach(§4) 安装偏差说明**:文档写配置目录 `~/.agent-reach/`,但本仓实际 Python venv 建在 `~/.agent-reach-venv/`,mcporter 配置被写到 `<repository_root>/config/mcporter.json`(mcporter 默认读 cwd)。两个路径 Agent Reach 都能识别,但跨目录跑命令时建议 `export MCPORTER_CONFIG=<仓库>/config/mcporter.json` 显式指定。
+- agent-reach 装好后,本仓 `~/.claude/skills/agent-reach/` 和 `~/.agents/skills/agent-reach/` 自动出现,下次 Claude Code / 任意 agent 会话即自动加载。
