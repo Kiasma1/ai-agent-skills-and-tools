@@ -1,0 +1,29 @@
+# 书籍原始文件(扫描本/EPUB/PDF)
+*.pdf
+*.epub
+*.mobi
+*.azw3
+
+# OCR 中间产物
+_ocr_cache/
+_ocr_out/
+*_ocr_*/
+
+# 大文件/数据集
+*.layered.apkg
+*.apkg
+COCA-English.apkg
+
+# 子项目目录(各自有独立 git)
+AppNeedsClaw-main/
+FileCodeBox-master/
+TreeSize/
+"26-大明朝1566/"
+"4339-自私的基因(20世纪经典著作)/"
+"586-国富论（缩译全彩插图本） (1)/"
+"707-金字溏原理 (1)/"
+
+# 系统/缓存
+.DS_Store
+Thumbs.db
+*.tmp
