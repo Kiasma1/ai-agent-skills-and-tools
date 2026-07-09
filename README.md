@@ -1,170 +1,311 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新: 2026-07-06 中国标准时间
+> 最后更新: 2026-07-10 中国标准时间
 > wsqzlzc
 
-本清单按 **来源仓库** 分组,方便溯源与更新。覆盖 Claude Code / Codex / OpenClaw / Cursor / Gemini CLI / Hermes 等多端共用的 skills,及与这些 agent 深度配合的外部生态工具(MCP 服务、CLI、桌面 App)。
+清单按 **来源仓库** 分组,覆盖本机 `.claude/skills/` 下已安装的全部 skill、`.claude/plugins/` 下 Plugin(Marketplace) 暴露的 hook + skill,以及全局 MCP 服务。附 GitHub 地址与用途,方便溯源与复装。
 
 ---
 
-## 一、来自 obra/superpowers (Jesse Vincent, Prime Radiant)
+## 一、本地已安装 Skills(~/.claude/skills/)
 
+按作者/来源分 5 组。每组下列 `SKILL.md` 文件名、用途、来源仓库。
+
+### 1. obra / superpowers(Jesse Vincent, Prime Radiant)
 > 源仓库: https://github.com/obra/superpowers
 > License: MIT
-> 数量: **13 个核心 skill**（作为 Claude Code Plugin 安装,非直接拷贝）
-> 安装:
-> ```
-> /plugin install superpowers@claude-plugins-official
-> ```
-> 或通过仓库自带 marketplace:
+> 安装方式:
 > ```
 > /plugin marketplace add obra/superpowers-marketplace
 > /plugin install superpowers@superpowers-marketplace
 > ```
 
-| # | Skill 名 | 用途 |
-|---|---------|------|
-| 1 | `using-superpowers` | 元技能——确立如何查找和使用所有 superpowers skill,会话内任何响应前先触发 |
-| 2 | `brainstorming` | 需求分析 → 设计规格,写代码前先想清楚 |
-| 3 | `writing-plans` | 把规格拆成可执行的实现步骤,落到 `docs/superpowers/plans/` |
-| 4 | `executing-plans` | 逐步执行计划,每步校验后推进;subagent 可用时优先走 subagent-driven |
-| 5 | `test-driven-development` | 严格 TDD 红绿重构循环,一个垂直切片一个切片做 |
-| 6 | `systematic-debugging` | 定位→分析→假设→修复四阶段,防 AI 瞎猜 |
-| 7 | `verification-before-completion` | 声称完成前必须跑验证命令,证据先行 |
-| 8 | `requesting-code-review` | 派出 review 代理按"标准 + 规格"两轴审 diff |
-| 9 | `receiving-code-review` | 收到 review 反馈后技术严谨地处理,拒绝敷衍 |
-| 10 | `dispatching-parallel-agents` | 2 个以上无依赖任务并行跑 |
-| 11 | `subagent-driven-development` | 一个任务一个子 agent,两轮 review,隔关注点 |
-| 12 | `using-git-worktrees` | 用 git worktree 隔离功能开发,防分支污染 |
+| # | Skill 文件 | 用途 |
+|---|-----------|------|
+| 1 | `brainstorming` | 需求调研 + 设计规格,动手写代码前先想清楚(「12 因子产品」路径) |
+| 2 | `writing-plans` | 把规格拆成可执行步骤计划,落到 `docs/superpowers/plans/` |
+| 3 | `executing-plans` | 逐步执行计划,每步校验;支持 subagent-driven |
+| 4 | `test-driven-development` | 严格 TDD 红绿重构循环,未写失败测试不许写实现代码 |
+| 5 | `systematic-debugging` | 定位→分析→假设→修复四阶段,防瞎猜 |
+| 6 | `verification-before-completion` | 声称完成前必须跑验证命令,证据先行 |
+
+### 2. obra / superpowers — 代码评审与协作组(同上源 13 个核心技能中的)
+> 源仓库: https://github.com/obra/superpowers
+
+| # | Skill 文件 | 用途 |
+|---|-----------|------|
+| 7 | `code-review` | 沿「标准 + 规格」两轴审 diff,并行 subagent,审 branch/PR/「review since X」|
+| 8 | `requesting-code-review` | 派 review 代理审 diff |
+| 9 | `receiving-code-review` | 收到 review 反馈后技术性处理,拒绝敷衍 |
+| 10 | `dispatching-parallel-agents` | 2+ 无依赖任务并行跑 |
+| 11 | `subagent-driven-development` | 一个任务一个子 agent + 两轮 review |
+| 12 | `using-git-worktrees` | git worktree 隔离功能开发 |
 | 13 | `finishing-a-development-branch` | 收尾期 merge/PR/keep/discard 决策树 |
 
-> 注:obra 自 v6.0.0 (2026-06-16) 起更新密集,最近 v6.1.1 (2026-07-02) 主要修 Codex 兼容和 bootstrap 体积。**v6.1.0 砍掉了对 Gemini CLI 的支持,已装用户勿升**。
+### 3. obra / superpowers — 编程实践组
+> 源仓库: https://github.com/obra/superpowers
+
+| # | Skill 文件 | 用途 |
+|---|-----------|------|
+| 14 | `coding-discipline` | Karpathy 风格 + 终极 token 优化,产出 diff-only、无废话输出 |
+| 15 | `diagnosing-bugs` | 硬 bug / 性能回退的命令式诊断循环;关键词 diagnose/debug/debug this |
+| 16 | `domain-modeling` | 建立 / 锐化项目领域模型,术语表、通用语言、ADR |
+| 17 | `prototype` | 搭 throwable 原型回答设计问题(Lo-fi HTML 渲染)
+| 18 | `research` | 派 background agent 调研,抓一手源留 Markdown 到仓库 |
+| 19 | `teach` | 在工作区内教用户新技能/概念 |
+| 20 | `writing-great-skills` | 写 / 改 skill 的参考(vocabulary + 原则) |
+| 21 | `codebase-design` | 共享 deep-module 词汇:接口、接缝、可测性、AI 可导航 |
+
+### 4. Isaac Matt Pocock / Atom Skills(`setup-matt-pocock-skills` 拉取的一组工程 skill,以及 `ask-matt`)
+> 源仓库:
+> - https://github.com/mattpocock/atom (Atom 系列 skill)
+> - `ask-matt` 是上面 router,定位「当前用哪个 skill/flow 合适」
+> 安装方式(Auto 已配):
+> ```
+> /setup-matt-pocock-skills
+> ```
+
+| # | Skill 文件 | 用途 |
+|---|-----------|------|
+| 22 | `ask-matt` | 路由入口,根据描述建议应走哪个 skill/flow |
+| 23 | `handoff` | 把当前对话压成 handoff 文档,另一 agent 即刻接手 |
+| 24 | `claude-handoff` | 把对话交接给一个新的后台 agent(任务级交接,非通用 handoff) |
+| 25 | `implement` | 基于 spec / ticket 实现一小块工作 |
+| 26 | `to-spec` | 把当前对话合成为 spec 并发布到 issue tracker(纯整理,不访谈) |
+| 27 | `to-tickets` | 把计划/spec 拆成 tracer-bullet tickets(带阻塞边),落到本地/真实 tracker |
+| 28 | `triage` | 把 issue / 外部 PR 过「分类 → 核验 → grill → 写 agent-ready brief」状态机 |
+| 29 | `wayfinder` | 海量工作(超一个 session)画调查 tickets 共享地图,逐张清出路线 |
+| 30 | `improve-codebase-architecture` | 扫仓库找 deep-module 机会,可视化 HTML 报告 → grill 选定的一个 |
+| 31 | `setup-matt-pocock-skills` | **一次性初始化**:配设 tracker、triage label 词汇、domain doc 布局 |
+| 32 | `grill-me` | 硬审设计/计划的访谈(interview 式 stress-test) |
+| 33 | `grill-with-docs` | 同上 hard,顺手生成 ADR 与 glossary |
+| 34 | `grilling` | 通用的「grill」触发 stress-test,任意计划/设计 |
+
+### 5. 个性作者 / 专项 skill(独立 GitHub 仓库各自一个)
+
+| # | Skill 文件 | 用途 | 源仓库 |
+|---|-----------|------|--------|
+| 35 | `cangjie-skill` | **拆书**:把中文扫描书蒸馏成可复用 skill 或 MARKDOWN HANDBOOK(RapidOCR + 硬选型) | https://github.com/Kiasma1/cangjie-skill |
+| 36 | `darwin-skill` | **Skill 自优化器 v2.0**:SkillLens 9 维 rubric + SkillOpt + hill-climbing 自动优化 SKILL.md | https://github.com/alchaincyf/darwin-skill |
+| 37 | `nuwa-skill`(huashu-nuwa) | **造人**:输入人名或模糊需求 → 调研 → 思维框架 → 可运行的人物视角 skill | https://github.com/alchaincyf/nuwa-skill |
+| 38 | `steve-jobs-skill`(steve-jobs-perspective) | 以乔布斯视角审视产品/设计,6 心智模型 + 8 启发式,传记/访谈一手提炼 | https://github.com/alchaincyf/steve-jobs-skill |
+| 39 | `dataviz` | 任何图表 / 可视化(HTML SVG / Recharts / matplotlib 等)的风格系统配色 | (来自 c7179cdb9 / c2a91c7d7 — 平台内置 skill) |
+
+> 注:本机 `~/.claude/skills/` 共 32 个 skill 目录。上表把 superpowers 13 + atom 12 + 专项 4 + 内置 = 全部覆盖。
 
 ---
 
-## 二、保留自 jnMetaCode/superpowers-zh 的本地化 skill (obra 无对应)
+## 二、Plugins(Marketplace,全局启用)
 
-> 源仓库: https://github.com/jnMetaCode/superpowers-zh (已停止同步,仅保留下面 6 个中文独占 skill)
-> License: MIT
-> 数量: **6 个**(已从原来的 20 个精简,其余 13 个同名 skill 由 obra 原版 plugin 覆盖)
-> Installation:`cp -r`(本仓 `~/.claude/skills/` 下)
+本机 `~/.claude/settings.json` 启用 3 个全局 Plugin,都带 **SessionStart / UserPromptSubmit** 钩子,会话级强制模式。
 
-| # | Skill 名 | 触发 | 用途 |
-|---|---------|------|------|
-| 1 | `chinese-code-review` | 用户显式 `/chinese-code-review` | 中文 review 话术模板 + 必须修复/建议修改/仅供参考三档 + 国内团队常见反模式 |
-| 2 | `chinese-commit-conventions` | 用户显式 `/chinese-commit-conventions` | Conventional Commits 中文适配 + commitlint/husky/commitizen 中文模板 + changelog 配置 |
-| 3 | `chinese-documentation` | 用户显式 `/chinese-documentation` | 中英空格、全半角标点、术语保留、链接格式、中文文案排版指北 |
-| 4 | `chinese-git-workflow` | 用户显式 `/chinese-git-workflow` | Gitee、Coding.net、极狐 GitLab、CNB 的 SSH/HTTPS/凭据/CI 接入差异与镜像同步 |
-| 5 | `mcp-builder` | 模型触发 | 生产级 MCP 工具构建方法论,系统化扩展 AI 助手外部能力 |
-| 6 | `workflow-runner` | 模型触发 | 在 Claude Code / OpenClaw / Cursor 内直接跑 agency-orchestrator YAML 多角色工作流,无需 API key |
+### 1. caveman (Julius Brussee)
+- 仓库: https://github.com/JuliusBrussee/caveman
+- 市场 key: `caveman@caveman`
+- 用途 — **超压缩交流模式**:像 smart caveman 一样输出,实测砍 ~65% token 同时保留全部技术准确性;几乎每条消息响应
+- 钩子:
+  - `SessionStart` → `caveman-activate.js`
+  - `UserPromptSubmit` → `caveman-mode-tracker.js`
+- 级别:`full`(自动 — 关掉用 `stop caveman`)
+- 自带 agents:`cavecrew-builder / investigator / reviewer`(1–2 文件的小改动/只读定位)
+- 路径:`~/.claude/plugins/marketplaces/caveman/`
 
-> 还原历史版本(含已删除的 13 个中文翻译 skill):`git checkout backup/pre-obra-migration-clean`(基于 HEAD 的快照分支,大文件已剥离)
+### 2. ponytail (Dietrich Gebert)
+- 仓库: https://github.com/DietrichGebert/ponytail
+- 市场 key: `ponytail@ponytail`
+- 用途 — **Lazy senior dev 模式**:强制 YAGNI、库优先、最短 diff;先问「这段代码需要存在吗?」再写;bug 修在 root-cause 一处而非 all callers
+- 级别:`full`(默认,`stop ponytail` 关)
+- 路径:`~/.claude/plugins/cache/ponytail/ponytail/4.8.4/`
 
----
+### 3. superpowers-marketplace (obra)
+- 仓库: https://github.com/obra/superpowers-marketplace(市场);插件本身 https://github.com/obra/superpowers
+- 市场 key: `superpowers@superpowers-marketplace`
+- 用途 — 承载上文 13 个核心 skill + 若干 chrome / elements-of-style 扩展(本机当前启用核心 skill)
+- 路径:`~/.claude/plugins/cache/superpowers-marketplace/superpowers/6.1.1/`
 
-## 三、来自 mattpocock/skills (Matt Pocock)
-
-> 源仓库: https://github.com/mattpocock/skills
-> License: MIT
-> 数量: **16 个**(部分与 superpowers 重叠,此处仅列独家)
-> 安装: `npx skills add mattpocock/skills` → `/setup-matt-pocock-skills`
-
-| # | Skill 名 | 调用类型 | 用途 |
-|---|---------|---------|------|
-| 1 | `ask-matt` | 用户主动 | Router:诊断当前场景该用哪个 flow |
-| 2 | `grill-with-docs` | 用户主动 | 压力测试方案 + 同步建域模型/术语表/ADR |
-| 3 | `triage` | 用户主动 | Issue/PR 状态机分流:分类→核实→grill→写 agent-ready brief |
-| 4 | `improve-codebase-architecture` | 用户主动 | 扫代码库找 deepening 机会,出 HTML 可视化报告 |
-| 5 | `setup-matt-pocock-skills` | 一次性 | 配置 issue tracker/triage 标签/doc 布局,每 repo 跑一次 |
-| 6 | `to-issues` | 用户主动 | 把 plan/PRD 切成可独立领取的 issue(垂直切片) |
-| 7 | `to-prd` | 用户主动 | 从当前会话直接合成 PRD 发到 issue tracker |
-| 8 | `prototype` | 模型触发 | 做一次性原型验证 design 问题 |
-| 9 | `domain-modeling` | 模型触发 | 术语对照 + 边界压力测试 + 更新 CONTEXT.md/ADR |
-| 10 | `codebase-design` | 模型触发 | Deep module 词汇表:大行为、小接口、干净 seam、可测试 |
-| 11 | `code-review` | 模型触发 | Standards × Spec 两轴审 diff,并行子 agent |
-| 12 | `grill-me` | 用户主动 | 非代码场景的压力测试访谈 |
-| 13 | `handoff` | 用户主动 | 把当前会话压缩成跨 agent 交接文档 |
-| 14 | `teach` | 用户主动 | 在多会话内教一个新概念/新 skill |
-| 15 | `writing-great-skills` | 参考 | skill 写法参考 — 词汇与原则 |
-| 16 | `grilling` | 模型触发 | grill-me / grill-with-docs 的底层可复用访谈循环 |
+> 本机当前激活模式:**caveman full + ponytail full + superpowers 全部 skill**(叠加)`— 会话里表现:极简输出、YAGNI 行为、TDD/debug 严谨性同步生效。
 
 ---
 
-## 四、来自其他源
+## 三、全局 MCP Servers
 
-### 4.1 拆书产出 — 《系统之美》by Donella Meadows (经 cangjie-skill 蒸馏)
+本机 `~/.claude.json`(user) 层配置 2 个 MCP 服务:
 
-> 这些 skill 的 `source_book` 字段都指向同一本书,由 `cangjie-skill` 蒸馏生成。
+| # | MCP 服务 | 传输 | 启动命令 | 用途 |
+|---|---------|------|---------|------|
+| 1 | `codegraph` | stdio | `codegraph serve --mcp` | 跨文件 / 跨服务的代码图语义搜索、调用链、影响分析(codegraph CLI) |
+| 2 | `codebase-memory-mcp` | 本地 exe | `C:/Users/wsqzlzc/AppData/Local/Programs/codebase-memory-mcp/codebase-memory-mcp.exe` | 本地代码库 → 知识图谱 + GraphRAG 索引,给 agent 提供持久化代码记忆 |
 
-| Skill | 核心用途 |
-|-------|---------|
-| `feedback-loop-id` | 识别反馈回路,分调节(趋稳)与增强(指数/崩溃) |
-| `stock-flow-thinking` | 拆存量 vs 流量,增流入 vs 减流出 |
-| `leverage-points-12` | 梅多斯 12 杠杆点定位 |
-| `system-traps-8` | 梅多斯 8 大系统陷阱,反馈结构 + 结构性对策 |
-
-### 4.2 角色扮演 / 人物 skill (nuwa-skill 产出)
-
-| Skill | 素材来源 |
-|-------|---------|
-| `nuwa-skill` (女娲) | 通用人物 skill 制造器 — 输入人名/主题,自动调研→生成 |
-| `cangjie-skill` | 蒸馏一本书的框架为一套 atomic skill(上述系统之美系列由此生) |
-| `steve-jobs-skill` | Isaacson 授权传记 + Stanford 演讲 + Lost Interview 等 30+ 一手来源 |
-
-### 4.3 独立工具 / 方法论
-
-| Skill | 源 / 用途 |
-|-------|----------|
-| `darwin-skill` | https://github.com/alchaincyf/darwin-skill — 9 维 SkillLens + SkillOpt 自动优化器,hill-climbing + git 版本控制 |
-| `coding-discipline` | Karpathy 行为准则 + 终极 token 优化(diff-only,不废话) |
-| `video-downloader` | 支持抖音/B站/YouTube/小红书/微信视频号的视频、字幕、音频、元数据一键归档 |
+配置源文件:`~/.claude.json` → `mcpServers.mcpServers` 节点。
+> 注:`codegraph` 服务需先 `codegraph init` 索引仓库;本机 cc-switch-headroom 当前 **未索引**(inactivate,SKIP 收拢)。
 
 ---
 
-## 五、Agent 生态工具(MCP / 桌面 / Plugin)
-
-这些不是 skills,但跟 Claude Code / Codex / OpenClaw / Cursor / Gemini CLI 等 agent 深度绑定,增强或扩展其工作流。
-
-| 工具 | 源 | 定位 | 关键能力 |
-|------|----|------|---------|
-| **agent-reach** | https://github.com/Panniantong/agent-reach | 全网平台接入层(统一入口) | 一键装 mcporter/Exa/yt-dlp 核心 + 15 个平台渠道(Twitter/Reddit/Facebook/Instagram/小红书/B站/小宇宙/雪球/LinkedIn/V2EX/RSS/GitHub/YouTube/全网搜索/任意网页);多后端路由(OpenCLI 浏览器会话 / 平台 CLI / 公开 API);`agent-reach doctor` 查渠道状态;`--channels=all` 一键拉满;Skill 同时装在 `~/.claude/skills/` 和 `~/.agents/skills/`;v1.5.0 已装;MIT(请独立审阅上游工具各自的 license) |
-| **cc-switch** | https://github.com/farion1231/cc-switch | AI coding 全能助手(Tauri 2,跨平台) | 7 种 coding agent(Claude Code/Codex/Gemini CLI/OpenCode/OpenClaw/Hermes 等)的 API 提供商统一管理;一键切换 + 50+ 预设;本地代理热切 + 自动 failover;Dropbox/OneDrive/iCloud/WebDAV 云同步;MCP server/Skill 双向同步;113k stars;MIT |
-| **headroom** | https://github.com/headroomlabs-ai/headroom | AI Agent 上下文压缩层 | 工具输出/RAG/日志在送达 LLM 前压 60-95% token;Kompress-v2-base 自定义模型;CCR 可逆压缩;跨 agent 共享记忆;`headroom wrap <agent>` 即装即用;Apache 2.0 |
-| **last30days-skill** | https://github.com/mvanhorn/last30days-skill | 最近 30 天舆情研究引擎 | Reddit/X/YouTube(全字幕)/TikTok/Instagram/HN/Polymarket/GitHub 并行检索;人/公司/产品竞对 vs 对比;招聘信号;可分享 HTML report;v3.8.3 已装;48.7k stars;MIT |
-| **codebase-memory-mcp** | https://github.com/DeusData/codebase-memory-mcp | 代码知识图谱索引(MCP 服务) | 158 种 tree-sitter + Hybrid LSP;Cypher-like 查询;14 MCP 工具;SQLite WAL 持久化;单静态二进制零依赖;团队共享 zstd graph artifact;v0.8.1 已装;~25.3k stars;MIT |
-
----
-
-## 六、汇总
-
-| 类别 | 数量 | 位置 / 备注 |
-|------|------|------|
-| obra/superpowers (plugin) | 13 | `~/.claude/plugins/superpowers@...` 自动更新 |
-| 本地保留的中文独占 skill | 6 | `~/.claude/skills/`（chinese-*、mcp-builder、workflow-runner） |
-| 其他本地 skill | 32 | `~/.claude/skills/`（见 §3.4） |
-| **用户可见 skill 合计** | **51** | 13 plugin + 38 local |
-| 已激活 agent-reach 渠道 | 6 | GitHub / YouTube / V2EX / RSS/Atom / 任意网页 / B站 |
-| 待配置 agent-reach 渠道 | 9 | Twitter / Reddit / Facebook / Instagram / 小红书 / 小宇宙 / 雪球 / LinkedIn / 全网搜索 |
-| 已安装 Claude Code 插件 | 2 | last30days@3.8.3 + obra/superpowers(plugin) |
-| 已注册 Marketplace | 3 | last30days-skill / karpathy-skills / superpowers-marketplace |
-| 会话内置 skills | 51 | Claude Code 启动自动加载 |
-| 生态工具(MCP / CLI / Plugin) | 5 | agent-reach / cc-switch / headroom / last30days / codebase-memory-mcp |
-
-### 还原历史版本
+## 四、复装命令速查
 
 ```bash
-git checkout backup/pre-obra-migration-clean
+# 市场注册
+/plugin marketplace add JuliusBrussee/caveman
+/plugin marketplace add DietrichGebert/ponytail
+/plugin marketplace add obra/superpowers-marketplace
+
+# 启 3 大插件
+/plugin install caveman@caveman
+/plugin install ponytail@ponytail
+/plugin install superpowers@superpowers-marketplace
+
+# 个性 skill(直接 clone 到 ~/.claude/skills/)
+git clone https://github.com/Kiasma1/cangjie-skill.git      ~/.claude/skills/cangjie-skill
+git clone https://github.com/alchaincyf/darwin-skill.git   ~/.claude/skills/darwin-skill
+git clone https://github.com/alchaincyf/nuwa-skill.git     ~/.claude/skills/nuwa-skill
+git clone https://github.com/alchaincyf/steve-jobs-skill.git ~/.claude/skills/steve-jobs-skill
+
+# MCP:改 ~/.claude.json → mcpServers 块(见第三节表)
 ```
 
-此分支基于 HEAD（删 13 个 obra 同名 skill 之前的全量快照），已剥离 video-downloader 下载缓存等 >100MB 大文件。
+## 五、新电脑复刻指南
+
+把这套环境搬到另一台机器,按下面 4 步依次跑完即得(假设已装好 Claude Code CLI)。
+
+### 5.1 注册 3 个 marketplace + 启插件
+
+```bash
+/plugin marketplace add JuliusBrussee/caveman
+/plugin marketplace add DietrichGebert/ponytail
+/plugin marketplace add obra/superpowers-marketplace
+
+/plugin install caveman@caveman
+/plugin install ponytail@ponytail
+/plugin install superpowers@superpowers-marketplace
+```
+
+完成后 `~/.claude/settings.json` 的 `enabledPlugins` 应含上述三条 `true`。
+
+### 5.2 装本地 skill(全部 clone 到 ~/.claude/skills/)
+
+```bash
+# 专项 skill(各自独立仓库)
+git clone https://github.com/Kiasma1/cangjie-skill.git      ~/.claude/skills/cangjie-skill
+git clone https://github.com/alchaincyf/darwin-skill.git   ~/.claude/skills/darwin-skill
+git clone https://github.com/alchaincyf/nuwa-skill.git     ~/.claude/skills/nuwa-skill
+git clone https://github.com/alchaincyf/steve-jobs-skill.git ~/.claude/skills/steve-jobs-skill
+
+# + ~ 13 个 superpowers 工程 skill(随 superpowers@superpowers-marketplace 启用而可用,
+#   不用单独 clone;本机的 tdd / code-review / research / teach / implement 等都在这里)
+
+# + ~ 12 个 Atom / ask-matt 工程 skill(本机已装,由 setup-matt-pocock-skills 拉取;
+#   在新机先 clone superpowers 后按 /setup-matt-pocock-skills 引导安装)
+```
+
+> 校验:`~/.claude/skills/` 下应当 ≥ 30 个目录。
+
+### 5.3 装两个 MCP server
+
+编辑 `~/.claude.json`(顶层 `mcpServers` 块),加入:
+
+```json
+"mcpServers": {
+  "codegraph": {
+    "type": "stdio",
+    "command": "codegraph",
+    "args": ["serve", "--mcp"]
+  },
+  "codebase-memory-mcp": {
+    "command": "C:/路径/到/codebase-memory-mcp.exe"
+  }
+}
+```
+
+- `codegraph`:需先 `npm i -g codegraph`(或按官方文档装 CLI)
+- `codebase-memory-mcp`:先装对应 exe 后把绝对地址写进 `command`
+
+装完重启 Claude Code,会话里出现 `[mcp]` 工具槽即生效。
+
+### 5.4 状态栏脚本(本机自制,复刻必需)
+
+1. 建目录并写脚本 `~/.claude/plugins/cache/cp-statusline/combined-statusline.ps1`(内容见下方)
+2. 把 `~/.claude/settings.json` 加节点:
+
+```json
+"statusLine": {
+  "type": "command",
+  "command": "powershell -ExecutionPolicy Bypass -File \"<HOME>\\.claude\\plugins\\cache\\cp-statusline\\combined-statusline.ps1\""
+}
+```
+
+(把 `<HOME>` 换成实际用户目录;Cygwin/Git Bash 路径写法不同于 Windows 绝对路径,按所用终端调整转义。)
+
+3. 重启 Claude Code → 终端底部多出状态行。
+
+**脚本内容**(`combined-statusline.ps1`,本机成形版本):
+
+```powershell
+$ClaudeDir = if ($env:CLAUDE_CONFIG_DIR) { $env:CLAUDE_CONFIG_DIR } else { Join-Path $HOME ".claude" }
+function Get-FlagLevel($Name) {
+    $p = Join-Path $ClaudeDir $Name
+    if (-not (Test-Path $p)) { return $null }
+    try { $r = (Get-Content $p -ErrorAction Stop | Select-Object -First 1).Trim(); if ([string]::IsNullOrEmpty($r)) { return $null }; return $r } catch { return $null }
+}
+$caveman = Get-FlagLevel ".caveman-active"
+$pony    = Get-FlagLevel ".ponytail-active"
+if ($null -eq $caveman -and $null -eq $pony) { exit 0 }
+$Esc = [char]27
+function Render($Label,$Level,$Color) {
+    if ([string]::IsNullOrEmpty($Level) -or $Level -eq "full") { return "${Esc}[38;5;${Color}m[${Label}]${Esc}[0m" }
+    return "${Esc}[38;5;${Color}m[${Label}:$($Level.ToUpperInvariant())]${Esc}[0m"
+}
+if ($null -ne $caveman -and $null -ne $pony) {
+    [Console]::Write("${Esc}[38;5;173m[CAVEMAN & PONYTAIL]${Esc}[0m")
+} elseif ($null -ne $caveman) {
+    [Console]::Write((Render "CAVEMAN" $caveman "33"))
+} else {
+    [Console]::Write((Render "PONYTAIL" $pony "108"))
+}
+```
+
+### 5.5 复刻后checklist
+
+- [ ] `~/.claude/settings.json` → 3 个 enabledPlugins 全 true
+- [ ] `/plugin list` 显示 caveman + ponytail + superpowers-marketplace 均已装载
+- [ ] `~/.claude/skills/` ≥ 30 个目录(cangjie / darwin / nuwa / steve-jobs + superpowers 全套)
+- [ ] `~/.claude.json` mcpServers含 codegraph + codebase-memory-mcp → 会话里 `[mcp]` 槽出现
+- [ ] 重启后终端底部状态行:双开 `[CAVEMAN & PONYTAIL]` /单色单显
+- [ ] 模式验证:`/caveman`、`/ponytail` 各自可切换 lite/full/ultra
 
 ---
 
-## 备注
+## 六、状态栏(Statusline)配置
 
-- 拆书系列(§4.1)的"源"是原书,cangjie-skill 做的是蒸馏,归在独立来源是因为它无法追溯回一个上游 skill 仓库。
-- **obra/superpowers(§1) 作为 plugin 管理,更新靠 `/plugin update`**。不建议手动修改 `~/.claude/plugins/` 下由其管理的文件。
-- 中文独占 skill(§2)的 6 个文件直接放在 `~/.claude/skills/`,文件冲突检测依赖 skill name,chinese-* 与 obra 无重名。
-- backup 分支:`git checkout backup/pre-obra-migration-clean` 可还原到 superpowers-zh 全量 20 个 skill 的时期。
-- **agent-reach(§5) 安装偏差说明**:文档写配置目录 `~/.agent-reach/`,但本仓实际 Python venv 建在 `~/.agent-reach-venv/`,mcporter 配置被 `<repository_root>/config/mcporter.json`(mcporter 默认读 cwd)。跨目录跑命令时建议 `export MCPORTER_CONFIG=<仓库>/config/mcporter.json` 显式指定。
-- agent-reach 装好后,本仓 `~/.claude/skills/agent-reach/` 和 `~/.agents/skills/agent-reach/` 自动出现。
+两个 mode 插件(caveman、ponytail)各自写 `~/.claude/.caveman-active` / `~/.claude/.ponytail-active` 标记文件。本机改用**合一脚本**,按两个标记的有无渲染单条状态:
+
+| 状态 | 显示 |
+|------|------|
+| 双开 | `[CAVEMAN & PONYTAIL]`(amber 173) |
+| 仅 caveman | `[CAVEMAN]`(蓝 33) |
+| 仅 ponytail | `[PONYTAIL]`(绿 108) |
+| 都关 | 静默(无输出) |
+
+脚本路径:`~/.claude/plugins/cache/cp-statusline/combined-statusline.ps1`(非插件自带,本机自制)。
+
+`~/.claude/settings.json` 已配 `statusLine` 指向该脚本(需重启 Claude Code 生效)。
+
+逻辑:读两个标记文件 → 全无 `exit 0` → 双开写 amber `[CAVEMAN & PONYTAIL]` → 单写对应单色标签。
+
+---
+
+## 六、附:skill 个数汇总
+
+| 类别 | 数量 |
+|------|------|
+| 本地 SKILL.md | 32 个(skill 目录) |
+| Plugin(Marketplace) | 3 个全局启用 |
+| MCP server | 2 个(stdio) |
+| 涉及 GitHub 仓库 | 约 8 个(marketplace/skill 不同源) |
+
+---
+
+*本机实际信息源:*
+- *skills 目录:`~/.claude/skills/`* — 32 个
+- *市场:JuliusBrussee/caveman、DietrichGebert/ponytail、obra/superpowers-marketplace*
+- *settings:~/.claude/settings.json + ~/.claude.json(MCP)*
+- *激活模式:`~./caveman-active`, `~./ponytail-active` 标记存在*
