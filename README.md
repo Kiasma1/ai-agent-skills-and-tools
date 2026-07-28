@@ -1,6 +1,6 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新：2026-07-28 14:37（中国标准时间）
+> 最后更新：2026-07-28 22:12（中国标准时间）
 > 维护者：[@Kiasma1](https://github.com/Kiasma1)
 
 这是我的 Agent 能力索引：记录我拥有的项目、当前可用的 skills，以及支撑它们的工具。按任务取用，而不是追求安装数量。
@@ -33,6 +33,7 @@
 | `understand-learn` | 以练习和反馈驱动的方式理解代码库或技术概念。<br><strong>大白话：</strong>AI 不替你做题，而是一步步带你真正学会。 |
 | `youtube-bilibili-bilingual` | 将公开视频处理为可发布的 B 站双语内容。<br><strong>大白话：</strong>自动处理下载、字幕、压制和投稿这条流水线。 |
 | `sansheng-distill` | 将书籍、视频或播客蒸馏成有来源的可执行知识。<br><strong>大白话：</strong>替你啃长内容，最后交付一份有出处、能复用的精华。 |
+| `leader` | 先实测代码库并补充必要调研，再把一句话想法写成不超过 4000 字符、可直接交给 agent 独立执行的目标任务书，包含边界、验收、防作弊与断点续跑。<br><strong>大白话：</strong>你只管说想做什么，它负责查清情况、问几个关键问题，再写出一份可以直接复制给 AI 开工并用来验收的任务书。 |
 
 ### 设计与动效 · Emil Kowalski
 
@@ -48,6 +49,14 @@
 | `review-animations` | 按高标准审查动画与运动代码。<br><strong>大白话：</strong>请一位严格的动效审稿人挑出卡顿、突兀和不自然。 |
 | `pick-ui-library` | 为输入、图表、拖拽、状态管理等选择合适的 UI 库。<br><strong>大白话：</strong>告诉你该用哪个现成轮子，避免重复造轮子。 |
 | `prototype` | 并列构建多种 UI 方案，供视觉挑选。<br><strong>大白话：</strong>一次做出几个不同版本，直接看效果再选，不靠脑补。 |
+
+### Apple Liquid Glass · ECC
+
+来源：[affaan-m/ECC · liquid-glass-design](https://github.com/affaan-m/ECC/blob/main/docs/zh-CN/skills/liquid-glass-design/SKILL.md)。
+
+| Skill | 适用场景 |
+|---|---|
+| `liquid-glass-design` | 面向 iOS 26 的 Liquid Glass 设计与实现指南，覆盖 SwiftUI、UIKit 和 WidgetKit 中的玻璃材质、交互变形、容器、性能及可访问性。<br><strong>大白话：</strong>想给 iPhone 应用做苹果新的“液态玻璃”效果时，它会告诉你按钮、卡片、工具栏和小组件该怎么写，既有玻璃感又不会乱用或拖慢界面。 |
 
 ### 工程与协作 · Atom
 
