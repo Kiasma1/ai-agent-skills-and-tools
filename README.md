@@ -1,9 +1,11 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新: 2026-07-10 中国标准时间
+> 最后更新: 2026-07-28 中国标准时间
 > wsqzlzc
 
 清单按 **来源仓库** 分组,覆盖本机 `.claude/skills/` 下已安装的全部 skill、`.claude/plugins/` 下 Plugin(Marketplace) 暴露的 hook + skill,以及全局 MCP 服务。附 GitHub 地址与用途,方便溯源与复装。
+
+> **更新说明（2026-07-28）**：~~superpowers~~ 已成为历史记录，不再作为当前默认工作流或新机复刻项。随着 LLM 的规划、编码、调试与验证能力持续增强，固定、重型的流程框架带来的约束已超过其默认收益；现在更适合按任务按需组合轻量 skill、工具与明确的验收标准。下文中所有 ~~superpowers~~ 条目仅用于追溯既有环境，不代表推荐安装或启用。
 
 ---
 
@@ -11,7 +13,7 @@
 
 按作者/来源分 5 组。每组下列 `SKILL.md` 文件名、用途、来源仓库。
 
-### 1. obra / superpowers(Jesse Vincent, Prime Radiant)
+### 1. obra / ~~superpowers~~（历史记录；Jesse Vincent, Prime Radiant）
 > 源仓库: https://github.com/obra/superpowers
 > License: MIT
 > 安装方式:
@@ -29,7 +31,7 @@
 | 5 | `systematic-debugging` | 定位→分析→假设→修复四阶段,防瞎猜 |
 | 6 | `verification-before-completion` | 声称完成前必须跑验证命令,证据先行 |
 
-### 2. obra / superpowers — 代码评审与协作组(同上源 13 个核心技能中的)
+### 2. obra / ~~superpowers~~ — 代码评审与协作组（历史记录；同上源 13 个核心技能中的）
 > 源仓库: https://github.com/obra/superpowers
 
 | # | Skill 文件 | 用途 |
@@ -42,7 +44,7 @@
 | 12 | `using-git-worktrees` | git worktree 隔离功能开发 |
 | 13 | `finishing-a-development-branch` | 收尾期 merge/PR/keep/discard 决策树 |
 
-### 3. obra / superpowers — 编程实践组
+### 3. obra / ~~superpowers~~ — 编程实践组（历史记录）
 > 源仓库: https://github.com/obra/superpowers
 
 | # | Skill 文件 | 用途 |
@@ -117,13 +119,13 @@
 - 级别:`full`(默认,`stop ponytail` 关)
 - 路径:`~/.claude/plugins/cache/ponytail/ponytail/4.8.4/`
 
-### 3. superpowers-marketplace (obra)
+### 3. ~~superpowers-marketplace~~（历史插件；obra）
 - 仓库: https://github.com/obra/superpowers-marketplace(市场);插件本身 https://github.com/obra/superpowers
 - 市场 key: `superpowers@superpowers-marketplace`
-- 用途 — 承载上文 13 个核心 skill + 若干 chrome / elements-of-style 扩展(本机当前启用核心 skill)
+- 用途 — 曾承载上文 13 个核心 skill + 若干 chrome / elements-of-style 扩展；现仅保留历史信息，不建议启用
 - 路径:`~/.claude/plugins/cache/superpowers-marketplace/superpowers/6.1.1/`
 
-> 本机当前激活模式:**caveman full + ponytail full + superpowers 全部 skill**(叠加)`— 会话里表现:极简输出、YAGNI 行为、TDD/debug 严谨性同步生效。
+> 当前建议的默认模式：按任务选择轻量 skill 与工具，并以明确验收标准保证质量；不再叠加 ~~superpowers~~ 的固定流程。
 
 ---
 
@@ -144,15 +146,13 @@
 ## 四、复装命令速查
 
 ```bash
-# 市场注册
+# 市场注册（当前推荐）
 /plugin marketplace add JuliusBrussee/caveman
 /plugin marketplace add DietrichGebert/ponytail
-/plugin marketplace add obra/superpowers-marketplace
 
-# 启 3 大插件
+# 启用当前推荐的插件
 /plugin install caveman@caveman
 /plugin install ponytail@ponytail
-/plugin install superpowers@superpowers-marketplace
 
 # 个性 skill(直接 clone 到 ~/.claude/skills/)
 git clone https://github.com/Kiasma1/cangjie-skill.git      ~/.claude/skills/cangjie-skill
@@ -165,21 +165,19 @@ git clone https://github.com/alchaincyf/steve-jobs-skill.git ~/.claude/skills/st
 
 ## 五、新电脑复刻指南
 
-把这套环境搬到另一台机器,按下面 4 步依次跑完即得(假设已装好 Claude Code CLI)。
+把这套环境搬到另一台机器，按下面步骤依次完成即可（假设已装好 Claude Code CLI）。~~superpowers~~ 相关内容仅为历史记录，无需复刻。
 
-### 5.1 注册 3 个 marketplace + 启插件
+### 5.1 注册当前推荐的 marketplace + 启插件
 
 ```bash
 /plugin marketplace add JuliusBrussee/caveman
 /plugin marketplace add DietrichGebert/ponytail
-/plugin marketplace add obra/superpowers-marketplace
 
 /plugin install caveman@caveman
 /plugin install ponytail@ponytail
-/plugin install superpowers@superpowers-marketplace
 ```
 
-完成后 `~/.claude/settings.json` 的 `enabledPlugins` 应含上述三条 `true`。
+完成后 `~/.claude/settings.json` 的 `enabledPlugins` 应含上述两条 `true`。
 
 ### 5.2 装本地 skill(全部 clone 到 ~/.claude/skills/)
 
@@ -190,11 +188,9 @@ git clone https://github.com/alchaincyf/darwin-skill.git   ~/.claude/skills/darw
 git clone https://github.com/alchaincyf/nuwa-skill.git     ~/.claude/skills/nuwa-skill
 git clone https://github.com/alchaincyf/steve-jobs-skill.git ~/.claude/skills/steve-jobs-skill
 
-# + ~ 13 个 superpowers 工程 skill(随 superpowers@superpowers-marketplace 启用而可用,
-#   不用单独 clone;本机的 tdd / code-review / research / teach / implement 等都在这里)
+# ~~superpowers~~ 工程 skill 已不再作为复刻依赖；需要时选择更轻量的单项 skill 或工具。
 
-# + ~ 12 个 Atom / ask-matt 工程 skill(本机已装,由 setup-matt-pocock-skills 拉取;
-#   在新机先 clone superpowers 后按 /setup-matt-pocock-skills 引导安装)
+# + ~ 12 个 Atom / ask-matt 工程 skill(本机已装,由 setup-matt-pocock-skills 拉取)
 ```
 
 > 校验:`~/.claude/skills/` 下应当 ≥ 30 个目录。
@@ -265,9 +261,9 @@ if ($null -ne $caveman -and $null -ne $pony) {
 
 ### 5.5 复刻后checklist
 
-- [ ] `~/.claude/settings.json` → 3 个 enabledPlugins 全 true
-- [ ] `/plugin list` 显示 caveman + ponytail + superpowers-marketplace 均已装载
-- [ ] `~/.claude/skills/` ≥ 30 个目录(cangjie / darwin / nuwa / steve-jobs + superpowers 全套)
+- [ ] `~/.claude/settings.json` → caveman、ponytail 两个 enabledPlugins 为 true
+- [ ] `/plugin list` 显示 caveman + ponytail 已装载
+- [ ] `~/.claude/skills/` 含当前需要的专项 skill（按任务增量安装，无需安装 ~~superpowers~~ 全套）
 - [ ] `~/.claude.json` mcpServers含 codegraph + codebase-memory-mcp → 会话里 `[mcp]` 槽出现
 - [ ] 重启后终端底部状态行:双开 `[CAVEMAN & PONYTAIL]` /单色单显
 - [ ] 模式验证:`/caveman`、`/ponytail` 各自可切换 lite/full/ultra
