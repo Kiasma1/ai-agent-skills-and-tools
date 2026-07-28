@@ -1,6 +1,6 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新：2026-07-28 12:55（中国标准时间）
+> 最后更新：2026-07-28 13:01（中国标准时间）
 > 维护者：[@Kiasma1](https://github.com/Kiasma1)
 
 这是我的 Agent 能力索引：记录我拥有的项目、当前可用的 skills，以及支撑它们的工具。按任务取用，而不是追求安装数量。
@@ -51,23 +51,17 @@
 
 ### 工程与协作 · Atom
 
-来源：[mattpocock/atom](https://github.com/mattpocock/atom)。只在任务需要时调用相应 skill。
+来源：[mattpocock/atom](https://github.com/mattpocock/atom)。同一行表示概念相近、经常连用，或后者是更进一步的版本；不代表必须全部使用。
 
-| Skill | 用途 |
+| 相关 Skills | 说明 |
 |---|---|
-| `ask-matt` | 根据任务描述，建议应使用哪个 skill 或工作流。 |
-| `implement` | 基于已有 spec 或 ticket，实现一个小范围、可验证的改动。 |
-| `handoff` | 将当前对话和进度整理成可由另一位 agent 继续执行的交接文档。 |
-| `claude-handoff` | 将当前任务交接给新的后台 agent，保留必要的上下文与下一步。 |
-| `to-spec` | 把讨论沉淀为结构化规格，明确目标、范围和验收条件。 |
-| `to-tickets` | 将计划或规格拆成有依赖关系、可独立执行的 tickets。 |
-| `triage` | 分类并核验 issue 或外部 PR，形成可执行的处理 brief。 |
-| `wayfinder` | 为跨多个会话的大型工作建立调查地图、拆解路线与阻塞关系。 |
-| `improve-codebase-architecture` | 扫描代码库的架构改进机会，产出分析报告和下一步建议。 |
-| `setup-matt-pocock-skills` | 一次性初始化 Atom skills 所需的 tracker、标签与领域文档布局。 |
-| `grill-me` | 以访谈式追问压力测试一个设计、计划或决策。 |
-| `grill-with-docs` | 在压力测试的同时产出 ADR 和术语表等配套文档。 |
-| `grilling` | 对任意计划或方案进行通用的反问与风险检验。 |
+| `ask-matt` → `implement` | `ask-matt` 先判断该走哪个 skill 或工作流，`implement` 再根据已有 spec / ticket 完成一项小改动。**大白话：不知道用哪个就先问，选好以后再让它动手干活。** |
+| `handoff` → `claude-handoff` | `handoff` 把上下文和进度写成交接文档；`claude-handoff` 更进一步，直接把任务交给新的后台 agent。**大白话：前者是写交接班说明，后者是连说明带工作一起转给另一个 AI。** |
+| `to-spec` → `to-tickets` | `to-spec` 把讨论整理成目标、范围和验收条件；`to-tickets` 再拆成可独立执行、有先后关系的任务。**大白话：先把“到底要做什么”说清楚，再切成一张张能完成的工单。** |
+| `triage` → `wayfinder` | `triage` 适合给单个 issue / PR 分类、核验并确定下一步；`wayfinder` 面向跨多个会话的大工程，绘制任务、依赖和阻塞地图。**大白话：小问题先分诊，大工程先画路线图。** |
+| `improve-codebase-architecture` | 扫描代码库中的架构问题和改进机会，输出分析与行动建议。**大白话：给整个代码库做一次体检，告诉你哪里最值得先改。** |
+| `setup-matt-pocock-skills` | 初始化 Atom skills 使用的 tracker、标签和领域文档布局。**大白话：首次安装向导，通常只需要运行一次。** |
+| `grilling` → `grill-me` → `grill-with-docs` | `grilling` 通用挑刺，`grill-me` 通过连续追问深入压力测试，`grill-with-docs` 还会把结论整理成 ADR、术语表等文档。**大白话：从“帮我找漏洞”，升级到“追问到底”，最后再把结论写成正式文件。** |
 
 ### 其他专项
 
