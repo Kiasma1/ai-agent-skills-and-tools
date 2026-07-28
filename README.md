@@ -1,6 +1,6 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新：2026-07-28 12:53（中国标准时间）
+> 最后更新：2026-07-28 12:55（中国标准时间）
 > 维护者：[@Kiasma1](https://github.com/Kiasma1)
 
 这是我的 Agent 能力索引：记录我拥有的项目、当前可用的 skills，以及支撑它们的工具。按任务取用，而不是追求安装数量。
@@ -53,12 +53,21 @@
 
 来源：[mattpocock/atom](https://github.com/mattpocock/atom)。只在任务需要时调用相应 skill。
 
-| 场景 | Skills |
+| Skill | 用途 |
 |---|---|
-| 路由与实现 | `ask-matt`、`implement` |
-| 交接与规格 | `handoff`、`claude-handoff`、`to-spec`、`to-tickets` |
-| 分析与规划 | `triage`、`wayfinder`、`improve-codebase-architecture` |
-| 决策压力测试 | `grill-me`、`grill-with-docs`、`grilling` |
+| `ask-matt` | 根据任务描述，建议应使用哪个 skill 或工作流。 |
+| `implement` | 基于已有 spec 或 ticket，实现一个小范围、可验证的改动。 |
+| `handoff` | 将当前对话和进度整理成可由另一位 agent 继续执行的交接文档。 |
+| `claude-handoff` | 将当前任务交接给新的后台 agent，保留必要的上下文与下一步。 |
+| `to-spec` | 把讨论沉淀为结构化规格，明确目标、范围和验收条件。 |
+| `to-tickets` | 将计划或规格拆成有依赖关系、可独立执行的 tickets。 |
+| `triage` | 分类并核验 issue 或外部 PR，形成可执行的处理 brief。 |
+| `wayfinder` | 为跨多个会话的大型工作建立调查地图、拆解路线与阻塞关系。 |
+| `improve-codebase-architecture` | 扫描代码库的架构改进机会，产出分析报告和下一步建议。 |
+| `setup-matt-pocock-skills` | 一次性初始化 Atom skills 所需的 tracker、标签与领域文档布局。 |
+| `grill-me` | 以访谈式追问压力测试一个设计、计划或决策。 |
+| `grill-with-docs` | 在压力测试的同时产出 ADR 和术语表等配套文档。 |
+| `grilling` | 对任意计划或方案进行通用的反问与风险检验。 |
 
 ### 其他专项
 
