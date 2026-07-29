@@ -1,0 +1,117 @@
+/*
+ * LXGW screen typography
+ * SPDX-License-Identifier: MIT
+ *
+ * Keep the three source fonts as separate files. Adjust the URLs to match the
+ * project. local() supports machines where the official fonts are installed.
+ */
+
+@font-face {
+  font-family: "LXGW Body Composite";
+  src:
+    local("LXGW Bright"),
+    url("./fonts/LXGWBright-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1D00-1EFF,
+    U+2070-209F,
+    U+20A0-20CF,
+    U+2100-214F,
+    U+2150-218F;
+}
+
+@font-face {
+  font-family: "LXGW Body Composite";
+  src:
+    local("LXGW Neo ZhiSong Screen"),
+    url("./fonts/LXGWNeoZhiSongScreen.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+2000-206F,
+    U+2E80-2FFF,
+    U+3000-303F,
+    U+3100-312F,
+    U+31A0-31EF,
+    U+3200-33FF,
+    U+3400-4DBF,
+    U+4E00-9FFF,
+    U+F900-FAFF,
+    U+20000-2FA1F,
+    U+30000-323AF;
+}
+
+@font-face {
+  font-family: "LXGW UI Composite";
+  src:
+    local("LXGW Bright"),
+    url("./fonts/LXGWBright-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1D00-1EFF,
+    U+2070-209F,
+    U+20A0-20CF,
+    U+2100-214F,
+    U+2150-218F;
+}
+
+@font-face {
+  font-family: "LXGW UI Composite";
+  src:
+    local("LXGW Neo XiHei Screen"),
+    url("./fonts/LXGWNeoXiHeiScreen.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+2000-206F,
+    U+2E80-2FFF,
+    U+3000-303F,
+    U+3100-312F,
+    U+31A0-31EF,
+    U+3200-33FF,
+    U+3400-4DBF,
+    U+4E00-9FFF,
+    U+F900-FAFF,
+    U+20000-2FA1F,
+    U+30000-323AF;
+}
+
+:root {
+  --font-reading: "LXGW Body Composite", serif;
+  --font-interface: "LXGW UI Composite", sans-serif;
+  --font-latin: "LXGW Bright", sans-serif;
+}
+
+.reading,
+.prose,
+article {
+  font-family: var(--font-reading);
+  font-synthesis: none;
+}
+
+.interface,
+button,
+input,
+select,
+textarea,
+nav,
+[role="button"],
+[role="tab"] {
+  font-family: var(--font-interface);
+  font-synthesis: none;
+}
+
+.latin,
+.number,
+[lang^="en"] {
+  font-family: var(--font-latin);
+  font-synthesis: none;
+}

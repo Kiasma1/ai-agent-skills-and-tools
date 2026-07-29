@@ -1,0 +1,6 @@
+interface:
+  display_name: "叁笙书籍蒸馏"
+  short_description: "把书籍或视频系列蒸成可交互知识地图"
+  default_prompt: "使用 $sansheng-distill 蒸馏这本书并生成单文件交互网页。"
+policy:
+  allow_implicit_invocation: true

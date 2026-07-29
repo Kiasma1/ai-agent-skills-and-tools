@@ -1,0 +1,73 @@
+{
+  "skill": "youtube-bilibili-bilingual",
+  "version": "1.0.0",
+  "tests": [
+    {
+      "id": "basic-gemstone",
+      "description": "宝石排行视频：完整流程测试（不使用--no-translate）",
+      "input": {
+        "youtube_url": "https://www.youtube.com/watch?v=UEvbYcc0p9Q",
+        "bilibili_title": "26种宝石排行：有些真的贵得离谱",
+        "channel_name": "Mason Mignanelli",
+        "subtitle_layout": "cn-top-en-bottom",
+        "auto_upload": false,
+        "post_ranking_comment": true
+      },
+      "expected_outputs": [
+        "final_bilibili_video.mp4 存在且分辨率 ≥ 1920x1080",
+        "subs/bilingual_subs.ass 文件存在，含 CN 和 EN 两个 Style",
+        "subs/bilingual_subs.srt 文件存在，每条字幕中英双语",
+        "bilibili_description.txt 包含转载声明和排名总结",
+        "排名评论文件包含时间戳（格式 HH:MM:SS）和中英对照"
+      ],
+      "checks": [
+        {"check": "ASS CN Style fontsize = 46, MarginV = 88", "type": "file_content"},
+        {"check": "ASS EN Style fontsize = 24, MarginV = 28", "type": "file_content"},
+        {"check": "description 不含「中上英下」「硬字幕」等工艺词", "type": "file_content"},
+        {"check": "description 包含原视频链接和转载声明", "type": "file_content"}
+      ]
+    },
+    {
+      "id": "short-video-atomic-design",
+      "description": "短视频：3分钟原子设计，验证短内容处理质量",
+      "input": {
+        "youtube_url": "https://www.youtube.com/watch?v=Yi-A20x2dcA",
+        "bilibili_title": "3分钟讲透原子设计：从按钮到整站",
+        "channel_name": "Proctor + Stevenson",
+        "auto_upload": true,
+        "post_ranking_comment": true
+      },
+      "expected_outputs": [
+        "final_bilibili_video.mp4 存在",
+        "bilibili_description.txt 包含内容结构时间戳",
+        "上传后返回 BV 号"
+      ]
+    },
+    {
+      "id": "dry-run-no-translate",
+      "description": "干跑测试：已有英文 SRT，跳过翻译直接生成双语 ASS",
+      "input": {
+        "srt_path": "subs/audio.srt",
+        "no_translate": true
+      },
+      "command": "python scripts/build_bilingual_subs.py --srt subs/audio.srt --out-dir subs --no-translate",
+      "expected_outputs": [
+        "subs/bilingual_subs.ass 文件存在",
+        "subs/bilingual_subs.srt 文件存在（但中文行可能为空）"
+      ]
+    },
+    {
+      "id": "burn-hardsubs",
+      "description": "烧录测试：ASS → mp4",
+      "input": {
+        "video_path": "original_video.mp4",
+        "ass_path": "subs/bilingual_subs.ass"
+      },
+      "command": "python scripts/burn_hardsubs.py --video original_video.mp4 --ass subs/bilingual_subs.ass --out test_output.mp4",
+      "expected_outputs": [
+        "test_output.mp4 存在且大小 > 0",
+        "ffprobe 确认有视频流和音频流"
+      ]
+    }
+  ]
+}

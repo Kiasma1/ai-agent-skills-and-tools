@@ -1,0 +1,4 @@
+interface:
+  display_name: "霞鹜屏幕排版"
+  short_description: "按语义组合新致宋、新晰黑与 LXGW Bright"
+  default_prompt: "使用 $lxgw-screen-typography 为这个作品配置中文正文、中文界面及西文数字字体。"

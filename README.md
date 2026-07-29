@@ -24,16 +24,18 @@
 
 ## Skills
 
+仓库内可直接使用的 Skill 位于 [`skills/`](./skills/)；每个子目录都以 `SKILL.md` 作为入口。第三方 Skill 仍通过下方“来源”链接访问，避免重复分发和许可证混淆。
+
 ### 自建与维护
 
 | Skill / 项目 | 适用场景 |
 |---|---|
-| `lzc-explain-words` | 深入解释英文词汇并生成可阅读、可保存的词卡。<br><strong>大白话：</strong>把普通词典的一行释义，升级成一张真正能把词学明白的卡片。 |
-| `lxgw-screen-typography` | 为网页或界面建立舒适、统一的中西文排版。<br><strong>大白话：</strong>帮界面选对字体、字号和间距，让中文阅读更舒服。 |
-| `understand-learn` | 以练习和反馈驱动的方式理解代码库或技术概念。<br><strong>大白话：</strong>AI 不替你做题，而是一步步带你真正学会。 |
-| `youtube-bilibili-bilingual` | 将公开视频处理为可发布的 B 站双语内容。<br><strong>大白话：</strong>自动处理下载、字幕、压制和投稿这条流水线。 |
-| `sansheng-distill` | 将书籍、视频或播客蒸馏成有来源的可执行知识。<br><strong>大白话：</strong>替你啃长内容，最后交付一份有出处、能复用的精华。 |
-| `leader` | 先实测代码库并补充必要调研，再把一句话想法写成不超过 4000 字符、可直接交给 agent 独立执行的目标任务书，包含边界、验收、防作弊与断点续跑。<br><strong>大白话：</strong>你只管说想做什么，它负责查清情况、问几个关键问题，再写出一份可以直接复制给 AI 开工并用来验收的任务书。 |
+| [`lzc-explain-words`](./skills/lzc-explain-words/) | 深入解释英文词汇并生成可阅读、可保存的词卡。<br><strong>大白话：</strong>把普通词典的一行释义，升级成一张真正能把词学明白的卡片。 |
+| [`lxgw-screen-typography`](./skills/lxgw-screen-typography/) | 为网页或界面建立舒适、统一的中西文排版。<br><strong>大白话：</strong>帮界面选对字体、字号和间距，让中文阅读更舒服。 |
+| [`understand-learn`](./skills/understand-learn/) | 以练习和反馈驱动的方式理解代码库或技术概念。<br><strong>大白话：</strong>AI 不替你做题，而是一步步带你真正学会。 |
+| [`youtube-bilibili-bilingual`](./skills/youtube-bilibili-bilingual/) | 将公开视频处理为可发布的 B 站双语内容。<br><strong>大白话：</strong>自动处理下载、字幕、压制和投稿这条流水线。 |
+| [`sansheng-distill`](./skills/sansheng-distill/) | 将书籍、视频或播客蒸馏成有来源的可执行知识。<br><strong>大白话：</strong>替你啃长内容，最后交付一份有出处、能复用的精华。 |
+| [`leader`](./skills/leader/) | 先实测代码库并补充必要调研，再把一句话想法写成不超过 4000 字符、可直接交给 agent 独立执行的目标任务书，包含边界、验收、防作弊与断点续跑。<br><strong>大白话：</strong>你只管说想做什么，它负责查清情况、问几个关键问题，再写出一份可以直接复制给 AI 开工并用来验收的任务书。 |
 
 ### 设计与动效 · Emil Kowalski
 

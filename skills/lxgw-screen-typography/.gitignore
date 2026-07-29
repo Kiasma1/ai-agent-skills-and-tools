@@ -1,0 +1,12 @@
+# Never commit font binaries to this repository.
+fonts/
+*.ttf
+*.otf
+*.ttc
+*.woff
+*.woff2
+
+# Local artifacts
+.DS_Store
+Thumbs.db
+__pycache__/
