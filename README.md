@@ -13,7 +13,7 @@
 
 | 项目 | 状态 | 用途 |
 |---|---|---|
-| [ai-agent-skills-and-tools](https://github.com/Kiasma1/ai-agent-skills-and-tools) | 创建 | 本仓库：Agent skills 与工具的索引。<br><strong>大白话：</strong>我的 AI 工具箱目录，想找什么能力先来这里看。 |
+| [skills](https://github.com/Kiasma1/skills) | 创建 | 本仓库：Agent skills 与工具的索引。<br><strong>大白话：</strong>我的 AI 工具箱目录，想找什么能力先来这里看。 |
 | [lzc-explain-words](https://github.com/Kiasma1/lzc-explain-words) | 创建 | 英文词源、语义辨析、词卡与离线 HTML 渲染。<br><strong>大白话：</strong>查一个词不只给翻译，还讲它从哪来、怎么用、和近义词差在哪。 |
 | [lxgw-screen-typography](https://github.com/Kiasma1/lxgw-screen-typography) | 创建 | Codex 中文屏幕排版与字体混排。<br><strong>大白话：</strong>让中文网页和软件界面更耐看，不再像默认字体随便堆出来的。 |
 | [understand-learn](https://github.com/Kiasma1/understand-learn) | 创建 | 预测—验证式交互代码学习。<br><strong>大白话：</strong>让 AI 像老师一样边问边教，而不是直接把答案甩给你。 |
