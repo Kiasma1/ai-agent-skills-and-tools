@@ -1,0 +1,16 @@
+【本视频要点 · 点击时间可跳转】
+00:00 品牌会「活着」变化 / Brand is living
+00:06 多商品多页面改动成本 / Change cost at scale
+00:23 「弗兰肯斯坦」网站 / Frankenstein sites
+00:37 什么是原子设计 / What is Atomic Design
+00:44 原子 Atoms：按钮·字体·搜索框
+00:58 分子 Molecules：Hero·提示·搜索导航
+01:11 有机体 Organisms：页头页脚表单
+01:24 实践：三原子 → 可搜索分子
+01:41 加图升级为有机体 / Jazz it up
+01:54 只改原子，全站按钮色同步
+02:10 模板 Templates：有机体的胶水
+02:27 放到首页模板试布局
+02:40 页面 Pages：真实内容的界面
+02:57 测试与回环迭代 / Test & loop
+03:13 五层结构速览总结 / Summary

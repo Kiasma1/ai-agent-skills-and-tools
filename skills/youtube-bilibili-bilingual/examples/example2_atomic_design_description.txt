@@ -1,0 +1,28 @@
+3 分钟动画讲透「原子设计」：从按钮到整站，为什么 2026 年仍值得用。
+
+品牌不是静态的。站点商品多、页面多、品牌多时，改一处牵全身，久而久之就变成「弗兰肯斯坦」。原子设计把界面拆成原子 → 分子 → 有机体 → 模板 → 页面，改一个原子就能全站同步，兼顾灵活与品牌一致。
+
+本片用动画演示：搜索框如何从原子组合成分子、再升级为有机体；以及模板如何当「胶水」、页面如何承载真实内容并回环迭代。
+
+【内容结构 · 点击时间可跳转】
+00:00 品牌会「活着」变化 / Brand is living
+00:06 多商品多页面改动成本 / Change cost at scale
+00:23 「弗兰肯斯坦」网站 / Frankenstein sites
+00:37 什么是原子设计 / What is Atomic Design
+00:44 原子 Atoms：按钮·字体·搜索框
+00:58 分子 Molecules：Hero·提示·搜索导航
+01:11 有机体 Organisms：页头页脚表单
+01:24 实践：三原子 → 可搜索分子
+01:41 加图升级为有机体 / Jazz it up
+01:54 只改原子，全站按钮色同步
+02:10 模板 Templates：有机体的胶水
+02:27 放到首页模板试布局
+02:40 页面 Pages：真实内容的界面
+02:57 测试与回环迭代 / Test & loop
+03:13 五层结构速览总结 / Summary
+
+本视频转载自 YouTube 原作者 Proctor + Stevenson 的视频《Atomic Design: What is it and why is it important in 2026?》
+原视频链接：https://www.youtube.com/watch?v=Yi-A20x2dcA
+感谢原作者的精彩内容！仅供学习交流，版权归原作者所有。
+
+标签建议：原子设计,Atomic Design,UI设计,设计系统,前端,网页设计,组件化,双语字幕,转载,Proctor Stevenson

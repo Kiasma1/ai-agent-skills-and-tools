@@ -1,0 +1,12 @@
+# Core dependencies for youtube-bilibili-bilingual skill scripts
+# Install: pip install -r requirements.txt
+
+deep-translator>=1.11
+requests>=2.28
+openai-whisper>=20231117
+
+# Optional: faster-whisper for better GPU performance
+# faster-whisper>=1.0
+
+# Optional: biliup for Bilibili upload (see https://github.com/biliup/biliup-rs)
+# Install separately: pip install biliup  OR download biliup.exe from releases
