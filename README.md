@@ -1,11 +1,39 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新：2026-07-30 09:02（中国标准时间）
+> 最后更新：2026-07-30 09:54（中国标准时间）
 > 维护者：[@Kiasma1](https://github.com/Kiasma1)
 
 这是我的 Agent 能力索引：记录我拥有的项目、当前可用的 skills，以及支撑它们的工具。按任务取用，而不是追求安装数量。
 
 > **当前原则**：优先使用轻量 skill、合适工具和明确验收标准。~~superpowers~~ 仅保留为历史参考，不再是默认工作流或新机复刻项。
+
+---
+
+## 一键安装到 Pi
+
+本仓库同时是一个 manifest 驱动的 [Pi Package](https://pi.dev)。先安装一次管理扩展：
+
+```bash
+pi install git:github.com/Kiasma1/skills
+```
+
+然后在 Pi 中执行全量安装：
+
+```text
+/kiasma-skills install-all
+```
+
+也可以直接告诉 Pi“安装 Kiasma 清单中的全部 Skill”，由 `kiasma_skills` 工具执行。其他操作：
+
+```text
+/kiasma-skills list         # 查看默认集合与安装状态
+/kiasma-skills status       # 检查缺失、来源不符和重名
+/kiasma-skills sync         # 更新全局 Skills，并补装清单新增项
+```
+
+安装器以 [`catalog.json`](catalog.json) 为唯一机器可读来源，默认把 32 个活跃 Skill 安装到 `~/.agents/skills`，供 Pi 和其他兼容 Agent 共用。它不会安装历史 `superpowers`、插件/MCP 或平台内置 `dataviz`，也不会删除清单之外的 Skill。
+
+> **安全与版本策略**：当前策略是跟随各上游默认分支最新版，因此不可完全复现。第三方 Skill 可能包含可执行脚本；安装或同步前会汇总来源并要求一次确认。安装器本身只调用 `npx skills` 获取 Skill，不主动执行 Skill 自带脚本或依赖安装。
 
 ---
 
@@ -33,7 +61,7 @@
 | `understand-learn` | 以练习和反馈驱动的方式理解代码库或技术概念。<br><strong>大白话：</strong>AI 不替你做题，而是一步步带你真正学会。 |
 | `youtube-bilibili-bilingual` | 将公开视频处理为可发布的 B 站双语内容。<br><strong>大白话：</strong>自动处理下载、字幕、压制和投稿这条流水线。 |
 | `sansheng-distill` | 将书籍、视频或播客蒸馏成有来源的可执行知识。<br><strong>大白话：</strong>替你啃长内容，最后交付一份有出处、能复用的精华。 |
-| `leader` | 先实测代码库并补充必要调研，再把一句话想法写成不超过 4000 字符、可直接交给 agent 独立执行的目标任务书，包含边界、验收、防作弊与断点续跑。<br><strong>大白话：</strong>你只管说想做什么，它负责查清情况、问几个关键问题，再写出一份可以直接复制给 AI 开工并用来验收的任务书。<br><strong>来源：</strong>本地自建 skill，暂未单独发布仓库。 |
+| `leader` | 先实测代码库并补充必要调研，再把一句话想法写成不超过 4000 字符、可直接交给 agent 独立执行的目标任务书，包含边界、验收、防作弊与断点续跑。<br><strong>大白话：</strong>你只管说想做什么，它负责查清情况、问几个关键问题，再写出一份可以直接复制给 AI 开工并用来验收的任务书。<br><strong>来源：</strong>[KKKKhazix/khazix-skills · leader](https://github.com/KKKKhazix/khazix-skills/tree/main/leader)。 |
 
 ### 设计与动效 · Emil Kowalski
 
@@ -60,7 +88,7 @@
 
 ### 工程与协作 · Atom
 
-来源：[mattpocock/atom](https://github.com/mattpocock/atom)。同一行表示概念相近、经常连用，或后者是更进一步的版本；不代表必须全部使用。
+来源：[mattpocock/skills](https://github.com/mattpocock/skills)。同一行表示概念相近、经常连用，或后者是更进一步的版本；不代表必须全部使用。
 
 | 相关 Skills | 说明 |
 |---|---|
@@ -78,7 +106,7 @@
 |---|---|---|
 | `cangjie-skill` | 将中文扫描书蒸馏为 skill 或 Markdown Handbook。<br><strong>大白话：</strong>把一本厚书拆解、提炼，变成 AI 能照着执行的知识手册。 | [Kiasma1/cangjie-skill](https://github.com/Kiasma1/cangjie-skill)（fork） |
 | `darwin-skill` | 用 SkillLens 与 hill-climbing 优化 `SKILL.md`。<br><strong>大白话：</strong>让 skill 给自己做体检，并一轮轮改得更好用。 | [alchaincyf/darwin-skill](https://github.com/alchaincyf/darwin-skill) |
-| `nuwa-skill` | 从人物或模糊需求生成可运行的视角 skill。<br><strong>大白话：</strong>研究一个人的思考方式，再做成可以调用的“思维分身”。 | [alchaincyf/nuwa-skill](https://github.com/alchaincyf/nuwa-skill) |
+| `huashu-nuwa`（项目名 `nuwa-skill`） | 从人物或模糊需求生成可运行的视角 skill。<br><strong>大白话：</strong>研究一个人的思考方式，再做成可以调用的“思维分身”。 | [alchaincyf/nuwa-skill](https://github.com/alchaincyf/nuwa-skill) |
 | `steve-jobs-perspective` | 用乔布斯视角审视产品与设计。<br><strong>大白话：</strong>请一个“乔布斯式产品顾问”帮你砍掉平庸方案、聚焦核心体验。 | [alchaincyf/steve-jobs-skill](https://github.com/alchaincyf/steve-jobs-skill) |
 | `dataviz` | 生成一致、易读的图表与数据可视化。<br><strong>大白话：</strong>把枯燥数据画成一眼能看懂、风格统一的图。 | 平台内置 |
 
@@ -131,6 +159,7 @@
 
 ## 使用与维护
 
-- 安装或配置以各项目自身 README 为准；不再维护“一键装齐”的长命令清单。
+- 安装集合以 `catalog.json` 为准；README 负责面向人的说明，不作为安装器解析输入。
+- 使用 `/kiasma-skills sync` 跟随上游最新版并补装清单新增项。
 - 先从“我的资产”和 Emil 的设计工程 skills 中选，再按需添加外部能力。
 - 自有资产以 [Kiasma1 的公开仓库](https://github.com/Kiasma1?tab=repositories) 为准；私有项目不在此列。

@@ -1,0 +1,251 @@
+{
+  "version": 1,
+  "installPolicy": {
+    "scope": "global",
+    "target": "~/.agents/skills",
+    "versionPolicy": "latest",
+    "agent": "codex"
+  },
+  "exclusions": [
+    "historical superpowers skills",
+    "plugins and MCP tools",
+    "platform-provided dataviz"
+  ],
+  "skills": [
+    {
+      "name": "lzc-explain-words",
+      "source": "Kiasma1/lzc-explain-words",
+      "path": "SKILL.md",
+      "group": "自建与维护",
+      "enabled": true,
+      "note": "Kiasma 自建"
+    },
+    {
+      "name": "lxgw-screen-typography",
+      "source": "Kiasma1/lxgw-screen-typography",
+      "path": "SKILL.md",
+      "group": "自建与维护",
+      "enabled": true,
+      "note": "Kiasma 自建"
+    },
+    {
+      "name": "understand-learn",
+      "source": "Kiasma1/understand-learn",
+      "path": "understand-anything-plugin/skills/understand-learn/SKILL.md",
+      "group": "自建与维护",
+      "enabled": true,
+      "note": "只安装预测—验证式学习 Skill"
+    },
+    {
+      "name": "youtube-bilibili-bilingual",
+      "source": "Kiasma1/youtube-bilibili-bilingual",
+      "path": "SKILL.md",
+      "group": "自建与维护",
+      "enabled": true,
+      "note": "Kiasma 自建"
+    },
+    {
+      "name": "sansheng-distill",
+      "source": "Kiasma1/sansheng-distill",
+      "path": "skills/sansheng-distill/SKILL.md",
+      "group": "自建与维护",
+      "enabled": true,
+      "note": "社区维护版本"
+    },
+    {
+      "name": "leader",
+      "source": "KKKKhazix/khazix-skills",
+      "path": "leader/SKILL.md",
+      "installSource": "https://github.com/KKKKhazix/khazix-skills/tree/main/leader",
+      "group": "自建与维护",
+      "enabled": true,
+      "note": "来源：数字生命卡兹克"
+    },
+    {
+      "name": "emil-design-eng",
+      "source": "emilkowalski/skills",
+      "path": "skills/emil-design-eng/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "apple-design",
+      "source": "emilkowalski/skills",
+      "path": "skills/apple-design/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "animation-vocabulary",
+      "source": "emilkowalski/skills",
+      "path": "skills/animation-vocabulary/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "find-animation-opportunities",
+      "source": "emilkowalski/skills",
+      "path": "skills/find-animation-opportunities/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "improve-animations",
+      "source": "emilkowalski/skills",
+      "path": "skills/improve-animations/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "review-animations",
+      "source": "emilkowalski/skills",
+      "path": "skills/review-animations/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "pick-ui-library",
+      "source": "emilkowalski/skills",
+      "path": "skills/pick-ui-library/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "prototype",
+      "source": "emilkowalski/skills",
+      "path": "skills/prototype/SKILL.md",
+      "group": "设计与动效 · Emil Kowalski",
+      "enabled": true
+    },
+    {
+      "name": "liquid-glass-design",
+      "source": "affaan-m/ECC",
+      "path": "docs/zh-CN/skills/liquid-glass-design/SKILL.md",
+      "installSource": "https://github.com/affaan-m/ECC/tree/main/docs/zh-CN/skills/liquid-glass-design",
+      "group": "Apple Liquid Glass · ECC",
+      "enabled": true,
+      "note": "安装中文版本"
+    },
+    {
+      "name": "ask-matt",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/ask-matt/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "implement",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/implement/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "handoff",
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/handoff/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "claude-handoff",
+      "source": "mattpocock/skills",
+      "path": "skills/in-progress/claude-handoff/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "to-spec",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/to-spec/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "to-tickets",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/to-tickets/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "triage",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/triage/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "wayfinder",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/wayfinder/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/improve-codebase-architecture/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "setup-matt-pocock-skills",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "grilling",
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/grilling/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "grill-me",
+      "source": "mattpocock/skills",
+      "path": "skills/productivity/grill-me/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "grill-with-docs",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/grill-with-docs/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "cangjie-skill",
+      "source": "Kiasma1/cangjie-skill",
+      "path": "SKILL.md",
+      "group": "其他专项",
+      "enabled": true,
+      "note": "Kiasma fork"
+    },
+    {
+      "name": "darwin-skill",
+      "source": "alchaincyf/darwin-skill",
+      "path": "SKILL.md",
+      "group": "其他专项",
+      "enabled": true
+    },
+    {
+      "name": "huashu-nuwa",
+      "source": "alchaincyf/nuwa-skill",
+      "path": "SKILL.md",
+      "group": "其他专项",
+      "enabled": true,
+      "note": "项目名 nuwa-skill；Skill frontmatter 名称为 huashu-nuwa"
+    },
+    {
+      "name": "steve-jobs-perspective",
+      "source": "alchaincyf/steve-jobs-skill",
+      "path": "SKILL.md",
+      "group": "其他专项",
+      "enabled": true
+    }
+  ]
+}
