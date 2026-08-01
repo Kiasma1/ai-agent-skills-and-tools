@@ -8,10 +8,10 @@ import { loadCatalog } from "../extensions/kiasma-skills-core.js";
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const catalogPath = join(root, "catalog.json");
 
-test("catalog is valid, unique, and contains only the 32 active installable skills", async () => {
+test("catalog is valid, unique, and contains only the 34 active installable skills", async () => {
 	const catalog = await loadCatalog(catalogPath);
-	assert.equal(catalog.skills.length, 32);
-	assert.equal(new Set(catalog.skills.map((skill) => skill.name)).size, 32);
+	assert.equal(catalog.skills.length, 34);
+	assert.equal(new Set(catalog.skills.map((skill) => skill.name)).size, 34);
 	assert.ok(catalog.skills.every((skill) => skill.enabled));
 
 	const names = new Set(catalog.skills.map((skill) => skill.name));
@@ -20,7 +20,7 @@ test("catalog is valid, unique, and contains only the 32 active installable skil
 	}
 });
 
-test("catalog contains the path-specific leader and Chinese liquid glass sources", async () => {
+test("catalog contains the path-specific leader, minimal-diff, and Chinese liquid glass sources", async () => {
 	const catalog = await loadCatalog(catalogPath);
 	const byName = new Map(catalog.skills.map((skill) => [skill.name, skill]));
 	assert.deepEqual(
@@ -36,6 +36,29 @@ test("catalog contains the path-specific leader and Chinese liquid glass sources
 	assert.equal(
 		byName.get("liquid-glass-design")?.installSource,
 		"https://github.com/affaan-m/ECC/tree/main/docs/zh-CN/skills/liquid-glass-design",
+	);
+	assert.deepEqual(
+		{
+			source: byName.get("minimal-diff")?.source,
+			path: byName.get("minimal-diff")?.path,
+			installSource: byName.get("minimal-diff")?.installSource,
+		},
+		{
+			source: "dhruvinrsoni/agentskills-garden",
+			path: "skills/100-engineering/25-pragmatism/minimal-diff/SKILL.md",
+			installSource:
+				"https://github.com/dhruvinrsoni/agentskills-garden/tree/main/skills/100-engineering/25-pragmatism/minimal-diff",
+		},
+	);
+	assert.deepEqual(
+		{
+			source: byName.get("research")?.source,
+			path: byName.get("research")?.path,
+		},
+		{
+			source: "mattpocock/skills",
+			path: "skills/engineering/research/SKILL.md",
+		},
 	);
 });
 
