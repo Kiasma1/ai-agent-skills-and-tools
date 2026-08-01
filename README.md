@@ -7,6 +7,20 @@
 
 > **当前原则**：优先使用轻量 skill、合适工具和明确验收标准。~~superpowers~~ 仅保留为历史参考，不再是默认工作流或新机复刻项。
 
+## 最推荐
+
+若只先安装一组，优先从下面这些开始：
+
+- [`grilling-me`（实际 Skill 名为 `grill-me`）](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)：通过连续追问把计划和判断压力测试到位。
+- [`minimal-diff`](https://github.com/dhruvinrsoni/agentskills-garden/tree/main/skills/100-engineering/25-pragmatism/minimal-diff)：以最小、可逆且范围清楚的改动解决问题。
+- [`handoff`](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff)：把上下文、进度和下一步写成可接手的交接文档。
+- [`prototype`](https://github.com/emilkowalski/skills/tree/main/skills/prototype)：并列做出多个 UI 方案，直接比较后再选。
+- **[`research`](https://github.com/mattpocock/skills/tree/main/skills/engineering/research)**：优先查一手资料，并把可追溯结论写入仓库。
+- [`emil-design-eng`](https://github.com/emilkowalski/skills/tree/main/skills/emil-design-eng)：打磨 UI、动效和产品细节。
+- [`apple-design`](https://github.com/emilkowalski/skills/tree/main/skills/apple-design)：实现或审查 Apple 风格的交互、动效和空间层次。
+- [`leader`](https://github.com/KKKKhazix/khazix-skills/tree/main/leader)：把想法整理为可交给 agent 独立执行、可验收的任务书。
+- [`liquid-glass-design`](https://github.com/affaan-m/ECC/tree/main/docs/zh-CN/skills/liquid-glass-design)：面向 iOS 26 的 Liquid Glass 设计与实现指南。
+
 ---
 
 ## 一键安装到 Pi
@@ -31,7 +45,7 @@ pi install git:github.com/Kiasma1/skills
 /kiasma-skills sync         # 更新全局 Skills，并补装清单新增项
 ```
 
-安装器以 [`catalog.json`](catalog.json) 为唯一机器可读来源，默认把 32 个活跃 Skill 安装到 `~/.agents/skills`，供 Pi 和其他兼容 Agent 共用。它不会安装历史 `superpowers`、插件/MCP 或平台内置 `dataviz`，也不会删除清单之外的 Skill。
+安装器以 [`catalog.json`](catalog.json) 为唯一机器可读来源，默认把 34 个活跃 Skill 安装到 `~/.agents/skills`，供 Pi 和其他兼容 Agent 共用。它不会安装历史 `superpowers`、插件/MCP 或平台内置 `dataviz`，也不会删除清单之外的 Skill。
 
 > **安全与版本策略**：当前策略是跟随各上游默认分支最新版，因此不可完全复现。第三方 Skill 可能包含可执行脚本；安装或同步前会汇总来源并要求一次确认。安装器本身只调用 `npx skills` 获取 Skill，不主动执行 Skill 自带脚本或依赖安装。
 
@@ -63,6 +77,14 @@ pi install git:github.com/Kiasma1/skills
 | `sansheng-distill` | 将书籍、视频或播客蒸馏成有来源的可执行知识。<br><strong>大白话：</strong>替你啃长内容，最后交付一份有出处、能复用的精华。 |
 | `leader` | 先实测代码库并补充必要调研，再把一句话想法写成不超过 4000 字符、可直接交给 agent 独立执行的目标任务书，包含边界、验收、防作弊与断点续跑。<br><strong>大白话：</strong>你只管说想做什么，它负责查清情况、问几个关键问题，再写出一份可以直接复制给 AI 开工并用来验收的任务书。<br><strong>来源：</strong>[KKKKhazix/khazix-skills · leader](https://github.com/KKKKhazix/khazix-skills/tree/main/leader)。 |
 
+### 工程规范 · Agent Skills Garden
+
+来源：[dhruvinrsoni/agentskills-garden · minimal-diff](https://github.com/dhruvinrsoni/agentskills-garden/tree/main/skills/100-engineering/25-pragmatism/minimal-diff)。
+
+| Skill | 适用场景 |
+|---|---|
+| `minimal-diff` | 以最小正确改动解决问题，并在开始前约束范围、检查可逆性、避免顺手重构。<br><strong>大白话：</strong>只动真正需要动的地方，做完好回退，也不把一个小修复变成大翻新。 |
+
 ### 设计与动效 · Emil Kowalski
 
 来源：[emilkowalski/skills](https://github.com/emilkowalski/skills/tree/main/skills)（Skills for Design Engineers）。
@@ -93,6 +115,7 @@ pi install git:github.com/Kiasma1/skills
 | 相关 Skills | 说明 |
 |---|---|
 | `ask-matt` → `implement` | `ask-matt` 先判断该走哪个 skill 或工作流，`implement` 再根据已有 spec / ticket 完成一项小改动。<br><strong>大白话：</strong>不知道用哪个就先问，选好以后再让它动手干活。 |
+| `research` | 基于官方文档、源码、规范等一手资料研究问题，并把带出处的结论写入仓库。<br><strong>大白话：</strong>先把资料查真、出处标清，再交给团队可以复核的研究笔记。 |
 | `handoff` → `claude-handoff` | `handoff` 把上下文和进度写成交接文档；`claude-handoff` 更进一步，直接把任务交给新的后台 agent。<br><strong>大白话：</strong>前者是写交接班说明，后者是连说明带工作一起转给另一个 AI。 |
 | `to-spec` → `to-tickets` | `to-spec` 把讨论整理成目标、范围和验收条件；`to-tickets` 再拆成可独立执行、有先后关系的任务。<br><strong>大白话：</strong>先把“到底要做什么”说清楚，再切成一张张能完成的工单。 |
 | `triage` → `wayfinder` | `triage` 适合给单个 issue / PR 分类、核验并确定下一步；`wayfinder` 面向跨多个会话的大工程，绘制任务、依赖和阻塞地图。<br><strong>大白话：</strong>小问题先分诊，大工程先画路线图。 |

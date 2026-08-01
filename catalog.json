@@ -62,6 +62,15 @@
       "note": "来源：数字生命卡兹克"
     },
     {
+      "name": "minimal-diff",
+      "source": "dhruvinrsoni/agentskills-garden",
+      "path": "skills/100-engineering/25-pragmatism/minimal-diff/SKILL.md",
+      "installSource": "https://github.com/dhruvinrsoni/agentskills-garden/tree/main/skills/100-engineering/25-pragmatism/minimal-diff",
+      "group": "工程规范 · Agent Skills Garden",
+      "enabled": true,
+      "note": "最小正确改动、范围控制与可逆性校验"
+    },
+    {
       "name": "emil-design-eng",
       "source": "emilkowalski/skills",
       "path": "skills/emil-design-eng/SKILL.md",
@@ -137,6 +146,13 @@
       "name": "implement",
       "source": "mattpocock/skills",
       "path": "skills/engineering/implement/SKILL.md",
+      "group": "工程与协作 · Matt Pocock",
+      "enabled": true
+    },
+    {
+      "name": "research",
+      "source": "mattpocock/skills",
+      "path": "skills/engineering/research/SKILL.md",
       "group": "工程与协作 · Matt Pocock",
       "enabled": true
     },

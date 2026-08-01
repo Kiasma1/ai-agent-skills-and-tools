@@ -41,9 +41,9 @@ async function writeSkill(home, directoryName, frontmatterName) {
 test("install units group normal repositories but preserve path-scoped sources", () => {
 	const units = groupInstallUnits(catalog);
 	const matt = units.find((unit) => unit.source === "mattpocock/skills");
-	assert.equal(matt.skills.length, 13);
+	assert.equal(matt.skills.length, 14);
 	assert.ok(buildInstallArgs(matt).includes("--full-depth"));
-	assert.deepEqual(buildInstallArgs(matt).slice(-13), matt.skills.map((skill) => skill.name));
+	assert.deepEqual(buildInstallArgs(matt).slice(-14), matt.skills.map((skill) => skill.name));
 
 	const liquidGlass = units.find((unit) => unit.source === "affaan-m/ECC");
 	assert.equal(
