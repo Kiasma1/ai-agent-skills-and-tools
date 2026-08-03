@@ -1,11 +1,20 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新：2026-07-30 09:54（中国标准时间）
+> 最后更新：2026-08-03 23:58（中国标准时间）
 > 维护者：[@Kiasma1](https://github.com/Kiasma1)
 
 这是我的 Agent 能力索引：记录我拥有的项目、当前可用的 skills，以及支撑它们的工具。按任务取用，而不是追求安装数量。
 
 > **当前原则**：优先使用轻量 skill、合适工具和明确验收标准。~~superpowers~~ 仅保留为历史参考，不再是默认工作流或新机复刻项。
+
+## 当前环境快照
+
+| 文件 | 内容 |
+|---|---|
+| [CURRENT_STATE.md](./CURRENT_STATE.md) | 119 个当前可见 skills、12 个已启用插件、4 个 MCP 服务及版本状态。 |
+| [AGENTS.md](./AGENTS.md) | 当前生效的 CodeGraph、codebase-memory-mcp 与 ADHD 输出规则。 |
+
+---
 
 ## 最推荐
 
@@ -55,7 +64,7 @@ pi install git:github.com/Kiasma1/skills
 
 | 项目 | 状态 | 用途 |
 |---|---|---|
-| [ai-agent-skills-and-tools](https://github.com/Kiasma1/ai-agent-skills-and-tools) | 创建 | 本仓库：Agent skills 与工具的索引。<br><strong>大白话：</strong>我的 AI 工具箱目录，想找什么能力先来这里看。 |
+| [skills](https://github.com/Kiasma1/skills) | 创建 | 本仓库：Agent skills、插件与运行环境状态索引。<br><strong>大白话：</strong>我的 AI 工具箱目录，想找什么能力先来这里看。 |
 | [lzc-explain-words](https://github.com/Kiasma1/lzc-explain-words) | 创建 | 英文词源、语义辨析、词卡与离线 HTML 渲染。<br><strong>大白话：</strong>查一个词不只给翻译，还讲它从哪来、怎么用、和近义词差在哪。 |
 | [lxgw-screen-typography](https://github.com/Kiasma1/lxgw-screen-typography) | 创建 | Codex 中文屏幕排版与字体混排。<br><strong>大白话：</strong>让中文网页和软件界面更耐看，不再像默认字体随便堆出来的。 |
 | [understand-learn](https://github.com/Kiasma1/understand-learn) | 创建 | 预测—验证式交互代码学习。<br><strong>大白话：</strong>让 AI 像老师一样边问边教，而不是直接把答案甩给你。 |
