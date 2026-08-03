@@ -1,6 +1,6 @@
 # AI Agent Skills 与生态工具清单
 
-> 最后更新：2026-08-03 23:58（中国标准时间）
+> 最后更新：2026-08-04 00:05（中国标准时间）
 > 维护者：[@Kiasma1](https://github.com/Kiasma1)
 
 这是我的 Agent 能力索引：记录我拥有的项目、当前可用的 skills，以及支撑它们的工具。按任务取用，而不是追求安装数量。
@@ -11,7 +11,7 @@
 
 | 文件 | 内容 |
 |---|---|
-| [CURRENT_STATE.md](./CURRENT_STATE.md) | 119 个当前可见 skills、12 个已启用插件、4 个 MCP 服务及版本状态。 |
+| [CURRENT_STATE.md](./CURRENT_STATE.md) | 120 个当前可见 skills、12 个已启用插件、4 个 MCP 服务及版本状态。 |
 | [AGENTS.md](./AGENTS.md) | 当前生效的 CodeGraph、codebase-memory-mcp 与 ADHD 输出规则。 |
 
 ---

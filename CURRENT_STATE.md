@@ -1,6 +1,6 @@
 # 当前 Codex 状态快照
 
-> 采集时间：2026-08-03 23:58（中国标准时间）
+> 采集时间：2026-08-04 00:05（中国标准时间）
 >
 > 此文件只记录可公开的名称、版本和启用状态。用户目录统一写成 `~`，不保存令牌、Cookie 或环境变量值。
 
@@ -10,11 +10,11 @@
 |---|---|
 | Codex CLI | `0.144.2` |
 | Codex 用户 skills | 21 个，位于 `~/.codex/skills/` |
-| 共享 Agent skills | 93 个，位于 `~/.agents/skills/` |
+| 共享 Agent skills | 94 个，位于 `~/.agents/skills/` |
 | Codex 系统 skills | 5 个，位于 `~/.codex/skills/.system/` |
-| 直接 skills 去重后 | 100 个 |
+| 直接 skills 去重后 | 101 个 |
 | 已启用插件提供的 skills | 19 个（去重） |
-| 当前可见 skills 总数 | 119 个（去重） |
+| 当前可见 skills 总数 | 120 个（去重） |
 | 已安装并启用插件 | 12 个 |
 | 已启用 MCP 服务 | 4 个 |
 
@@ -48,14 +48,14 @@
 </details>
 
 <details>
-<summary>共享 Agent skills（93）</summary>
+<summary>共享 Agent skills（94）</summary>
 
 - `animation-vocabulary`, `apple-design`, `ask-matt`, `atomic-html-normalizer`, `atomic-ooux-tokens`
 - `banner-design`, `batch-grill-me`, `brand`, `cangjie-skill`, `check-work`
 - `chinese-code-review`, `chinese-commit-conventions`, `chinese-documentation`, `chinese-git-workflow`, `claude-handoff`
 - `code-review`, `codebase-design`, `codebase-memory`, `codex-model-routing-team`, `coding-discipline`
 - `create-skill`, `darwin-skill`, `design`, `design-an-interface`, `design-system`
-- `diagnosing-bugs`, `disk-cleaner`, `distill-books`, `domain-modeling`, `edit-article`
+- `diagnosing-bugs`, `disk-cleaner`, `disk-cleaner-mcp`, `distill-books`, `domain-modeling`, `edit-article`
 - `emil-design-eng`, `find-animation-opportunities`, `git-guardrails-claude-code`, `grill-me`, `grill-with-docs`
 - `grilling`, `handoff`, `hatch-pet`, `help`, `huashu-nuwa`
 - `imagine`, `implement`, `improve-animations`, `improve-codebase-architecture`, `leader`
